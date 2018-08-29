@@ -1,0 +1,52 @@
+{
+  "intents": [{
+      "slots": [{
+        "name": "Account",
+        "type": "LIST_OF_ACCOUNTS"
+      }],
+      "intent": "BalanceIntent"
+    },
+    {
+      "intent": "ListAccountIntent"
+    },
+    {
+      "intent": "getPubSpend"
+    },
+    {
+      "intent": "TransactionIntent",
+      "slots": [{
+        "name": "Account",
+        "type": "LIST_OF_ACCOUNTS"
+      }]
+    },
+    {
+      "intent": "EndSession"
+    },
+    {
+      "intent": "CopIntent"
+    },
+    {
+      "intent": "SayHelloIntent"
+    },
+    {
+      "slots": [{
+          "name": "AmountDollars",
+          "type": "AMAZON.NUMBER"
+        },
+        {
+          "name": "AmountCents",
+          "type": "AMAZON.NUMBER"
+        },
+        {
+          "name": "SourceAccount",
+          "type": "LIST_OF_ACCOUNTS"
+        },
+        {
+          "name": "DestinationAccount",
+          "type": "LIST_OF_ACCOUNTS"
+        }
+      ],
+      "intent": "TransferIntent"
+    }
+  ]
+}

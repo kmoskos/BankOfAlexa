@@ -1,0 +1,6 @@
+README.txt
+pytemperature/__init__.py
+pytemperature.egg-info/PKG-INFO
+pytemperature.egg-info/SOURCES.txt
+pytemperature.egg-info/dependency_links.txt
+pytemperature.egg-info/top_level.txt
