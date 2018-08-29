@@ -1,0 +1,10 @@
+# Alexa Skill Set up (developer.amazon.com)
+1. Create a new developer account using amazon.com credentials
+2. Create a new custom skill and give it a name
+3. Enter Skill Invocation Name (example: the bank)
+4. Select JSON Editor under Interaction Model in left menu
+5. Upload alexa_interaction_model.json to generate intents and slots
+6. Select Endpoint under Interaction Model in left menu
+7. Select HTTPS, Default Region with values https://z456845fl3.execute-api.ap-southeast-2.amazonaws.com/demo and "My dev endpoint is a sub-domain of a domain.."for SSL cert type
+8. Save Model and Build
+9. Use Dashboard for visualizing bank transfer and checking balance http://bankofalexa.s3-website-us-east-1.amazonaws.com/

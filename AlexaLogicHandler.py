@@ -6,8 +6,7 @@ from datetime import datetime as date
 import json
 import pytemperature
 import boto3
-#module broken will look for alternative some day..
-#from yahoo_finance import Share
+from yahoofinancials import YahooFinancials as Share
 
 
 class AlexaLogicHandler(AlexaBaseHandler):
@@ -487,8 +486,8 @@ class AlexaLogicHandler(AlexaBaseHandler):
             "JPY": "Japanese Yen"
         }.get(currency, "")
         ) # returns nothing if currency not found
-    """
-    #"..get share price of X" - doesnt work: yahoo_finance module broken
+    
+    #"..get share price of X"
     def _get_share_price(self, intent, session):
         session_attributes = session["attributes"]
         card_title = "Share Price"
@@ -514,7 +513,7 @@ class AlexaLogicHandler(AlexaBaseHandler):
                         code = str(i["Code"])
                         code += ".AX" # adding for Australian Market. Required for yahoo_finance module
                         print ("Ticket code: {0}".format(code))
-                        balance_arr = self._format_currency(float(Share(code).get_price()))
+                        balance_arr = self._format_currency(float(Share(code).get_current_price()))
                         print (balance_arr)
 
 
@@ -536,7 +535,7 @@ class AlexaLogicHandler(AlexaBaseHandler):
             should_end_session)
 
         return (self._build_response(session_attributes, speechlet))
-    """
+    
     def _set_passCode(self, intent, session):
         session_attributes = {}
         card_title = "Setting PassCode"
@@ -636,8 +635,8 @@ class AlexaLogicHandler(AlexaBaseHandler):
                 return (self._say_hi_to_cop(intent, session))
             elif intent_name == "SayHelloIntent":
                 return (self._say_hello(intent, session))
-            #elif intent_name == "SharePriceIntent":
-             #   return (self._get_share_price(intent, session))
+            elif intent_name == "SharePriceIntent":
+                return (self._get_share_price(intent, session))
             elif intent_name == "AuthenticateIntent":
                 return (self._set_passCode(intent, session))
             else:

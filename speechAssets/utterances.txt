@@ -1,0 +1,46 @@
+# say hello
+say hello
+
+# introduce and current date, weather
+introduce yourself
+
+# authenticate session with PIN code (lambda env var)
+# Alexa session attributes last for approx. 7 seconds after invocation. Too late and you'll have to authenticate again.
+my passcode is {PIN CODE}
+
+# check account balance - requires authenticated session
+how much money do i have in my {Account} account
+how much money is in my {Account} account
+how much is in my {Account} account
+
+# list available accounts - requires authenticated session
+what accounts do I have
+which accounts do I have
+what accounts have i got
+list my accounts
+
+# beer money from savings account - requires authenticated session
+how much can i spend in the pub tonight
+how much beer can I buy
+
+# get transaction history - requires authenticated session
+tell me about my {Account} transactions
+tell me about my {Account}
+
+# transfer money between accounts - requires authenticated session
+# transferring between same accounts or for more value than current balance will generate custom error message.
+transfer {AmountDollars} dollars from my {SourceAccount} account to my {DestinationAccount} account
+transfer {AmountDollars} dollars and {AmountCents} cents from my {SourceAccount} account to my {DestinationAccount} account
+EXAMPLE: transfer 3 dollars and 50 cents from my savings account to my credit account
+
+# get currency rates - requires authenticated session
+ListCurrencyIntent list currency rates
+ListCurrencyIntent list exchange rates
+
+# bye
+good bye
+
+
+# get share price for ASX listed company - requires authenticated session
+what is the share price for {Company}
+
