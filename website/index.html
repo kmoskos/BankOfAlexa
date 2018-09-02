@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bank Of Alexa</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="narrow.css" rel="stylesheet">
+    <link href="vote.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Bank Of Alexa Dashboard</h1>
+          <h4 class="center">My Bank Account</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <canvas id="graph" class="inner cover" width="500" height="420"></canvas>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="lead">
+                <div class="input-color">
+                  <div class="color-box1" style="background-color: #e74c3c;"></div>
+                  <div class="color-box-label1">Debit</div>
+                  <div class="color-box2" style="background-color: #2ecc71;"></div>
+                  <div class="color-box-label2">Savings</div>
+                  <div class="color-box3" style="background-color: #3498db;"></div>
+                  <div class="color-box-label3">Credit</div>
+                  <div class="color-box4" style="background-color: #8A2BE2;"></div>
+                  <div class="color-box-label4">Mortgage</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <p>Bank of Alexa is a skill to simulate personal banking using an <a href="https://developer.amazon.com/alexa">Amazon Echo</a> device. Transactions between accounts are controlled via an <a href="https://developer.amazon.com/alexa-skills-kit">Alexa skill</a> invocation, with the values for the visual Chart being pulled from a <a href="https://aws.amazon.com/dynamodb/">DynamoDB</a> table using <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/identity-pools.html">Cognito Identity Pool</a> and <a href="https://aws.amazon.com/sdk-for-browser/">AWS Javascript SDK</a></p>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>Also, a big thanks to <a href="https://twitter.com/jbnunn">Jeff Nunn</a> for creating <a href="https://medium.com/aws-activate-startup-blog/building-dynamic-dashboards-using-lambda-and-dynamodb-streams-part-1-217e2318ae17">this template</a>.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.40.min.js"></script>
+    <script src="chart.min.js"></script>
+    <script src="refresh.js"></script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+#graph {
+  padding:0 0 20px 0;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 500px !important;
+}
+
+a {
+  color: #FF9900;
+}
+
+.lead {
+  color:#c6c6c6;
+}
+
+.input-color {
+    position: relative;
+}
+
+.input-color .color-box1 {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #ccc;
+}
+
+.input-color .color-box2 {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #ccc;
+}
+
+.input-color .color-box3 {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #ccc;
+}
+
+.input-color .color-box4 {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #ccc;
+}
+
+.input-color .color-box-label1 {
+    width: auto;
+    height: 20px;
+    display: inline-block;
+    color: #c6c6c6;
+    font-weight: bold;
+}
+.input-color .color-box-label2 {
+    width: auto;
+    height: 20px;
+    display: inline-block;
+    color: #c6c6c6;
+    font-weight: bold;
+}
+.input-color .color-box-label3 {
+    width: auto;
+    height: 20px;
+    display: inline-block;
+    color: #c6c6c6;
+    font-weight: bold;
+}
+.input-color .color-box-label4 {
+    width: auto;
+    height: 20px;
+    display: inline-block;
+    color: #c6c6c6;
+    font-weight: bold;
+}

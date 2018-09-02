@@ -17,8 +17,8 @@ class AlexaLogicHandler(AlexaBaseHandler):
     spoken.
     """
 
-    def __init__(self):
-        super(self.__class__, self).__init__()
+    #def __init__(self):
+     #   super(self.__class__, self).__init__()
 
     def _test_response(self, title, output, msg):
         session_attributes = {}
@@ -37,7 +37,7 @@ class AlexaLogicHandler(AlexaBaseHandler):
         return (self._build_response(session_attributes, speechlet))
 
     # utterance "..introduce yourself"
-    def _say_hello(self, intent, session):
+    def say_introduction(self, intent, session):
         
         requests.packages.urllib3.disable_warnings()
 
@@ -406,7 +406,7 @@ class AlexaLogicHandler(AlexaBaseHandler):
         return (self._build_response(session_attributes, speechlet))
 
     # utterance "..say hello/hi"
-    def _say_hi_to_cop(self, intent, session):
+    def _say_hello(self, intent, session):
         session_attributes = {}
         card_title = "Hello"
         message = "Hello. I am the Bank of Alexa. I can help you with your personal banking."
@@ -605,9 +605,9 @@ class AlexaLogicHandler(AlexaBaseHandler):
         if self._get_passCode(session) is False: # not an authenticated session, only allow some intents
             print ("UnAuth session. Selecting routing from available intents")
             if intent_name == "CopIntent":
-                return (self._say_hi_to_cop(intent, session))
-            elif intent_name == "SayHelloIntent":
                 return (self._say_hello(intent, session))
+            elif intent_name == "SayHelloIntent":
+                return (self.say_introduction(intent, session))
             elif intent_name == "AuthenticateIntent":
                 return (self._set_passCode(intent, session))
             elif intent_name == "EndSession":
@@ -632,9 +632,9 @@ class AlexaLogicHandler(AlexaBaseHandler):
             elif intent_name == "getPubSpend":
                 return (self._get_pub_spend(intent, session))
             elif intent_name == "CopIntent":
-                return (self._say_hi_to_cop(intent, session))
-            elif intent_name == "SayHelloIntent":
                 return (self._say_hello(intent, session))
+            elif intent_name == "SayHelloIntent":
+                return (self.say_introduction(intent, session))
             elif intent_name == "SharePriceIntent":
                 return (self._get_share_price(intent, session))
             elif intent_name == "AuthenticateIntent":
