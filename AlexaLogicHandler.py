@@ -2,11 +2,14 @@ from AlexaBaseHandler import AlexaBaseHandler
 import os
 import requests
 import inflect
+import time
 from datetime import datetime as date
 import json
+from uuid import uuid4
 import pytemperature
 import boto3
 from yahoofinancials import YahooFinancials as Share
+
 
 
 class AlexaLogicHandler(AlexaBaseHandler):
@@ -535,7 +538,54 @@ class AlexaLogicHandler(AlexaBaseHandler):
             should_end_session)
 
         return (self._build_response(session_attributes, speechlet))
-    
+    """ pending updates issue https://github.com/saltysoup/BankOfAlexa/issues/2" 
+    def _set_passCode(self, intent, session):
+        session_attributes = {}
+        card_title = "Setting PassCode"
+        card_output = ""
+        reprompt_text = "I am sorry, can you repeat your request?"
+        speech_output = ""
+        should_end_session = False
+        
+        try:
+            if 'passCode' in intent['slots']:
+                passCode = str(intent['slots']['passCode']['value'])
+                print ("user passed passCode: {0}".format(passCode))
+                myPassCode = os.environ['AUTHENTICATION_PASSCODE']
+                if passCode == myPassCode: # checking if correct passcode used
+                    sessionTable = os.environ['SESSION_TABLE']
+                    ddb = boto3.resource("dynamodb")
+                    ddb_client = ddb.Table(sessionTable)
+                    # writing sessionid, creationtime and expirationtime. Sessions will last for 300 seconds and purged automatically using dynamodb's TTL feature
+                    response = ddb_client.put_item(
+                        TableName = sessionTable,
+                        Item={
+                            "sessionid": str(uuid4()),
+                            "CreationTime": int(time.time()),
+                            "ExpirationTime": (int(time.time()) + 300) # 5 min
+                        }
+                    )
+                    print ("Recording new session: {}".format(response))
+                    message = "Thank you. You have successfully authenticated and may now interact with your account."
+                    card_output = "Successfully Authenticated."
+                else:
+                    message = "Sorry, that is not a valid passcode. Please try authenticating again by saying, my passcode is, followed by your 4 digit security code."
+                    card_output = "Incorrect Passcode."
+
+            speech_output = message
+            
+        except Exception as e:
+            print ("Exception caught on _set_passCode as: {0}".format(e))
+            speech_output = "Sorry. I was unable to detect a valid passCode. Please try again."
+            card_title = "Invalid Passcode"
+            card_output = "Invalid Passcode" 
+        
+        speechlet = self._build_speechlet_response(
+        card_title, card_output, speech_output, reprompt_text,
+        should_end_session)
+
+        return (self._build_response(session_attributes, speechlet))
+    """
     def _set_passCode(self, intent, session):
         session_attributes = {}
         card_title = "Setting PassCode"
@@ -561,7 +611,6 @@ class AlexaLogicHandler(AlexaBaseHandler):
                 else:
                     message = "Sorry, that is not a valid passcode. Please try authenticating again by saying, my passcode is, followed by your 4 digit security code."
                     card_output = "Incorrect Passcode."
-
             speech_output = message
             
         except Exception as e:
@@ -573,11 +622,10 @@ class AlexaLogicHandler(AlexaBaseHandler):
         speechlet = self._build_speechlet_response(
         card_title, card_output, speech_output, reprompt_text,
         should_end_session)
-
         return (self._build_response(session_attributes, speechlet))
-    
+
     def _get_passCode(self, session):
-        # change | to do check dynamodb session
+        
         print ("Checking if session is authenticated")
         try:
             data = session["attributes"]["passCode"]
